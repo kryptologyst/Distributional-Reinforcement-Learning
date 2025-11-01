@@ -1,0 +1,46 @@
+# Default configuration for distributional RL training
+default_config:
+  # Environment settings
+  env:
+    name: "MiniGrid"  # Options: MiniGrid, CartPole-v1, MountainCar-v0
+    size: 3  # For MiniGrid
+    max_episode_steps: 1000
+    
+  # Agent settings
+  agent:
+    algorithm: "C51"  # Options: C51, QR-DQN
+    state_dim: 2  # Will be set automatically based on environment
+    action_dim: 4  # Will be set automatically based on environment
+    lr: 0.001
+    gamma: 0.99
+    epsilon: 0.1
+    epsilon_decay: 0.995
+    epsilon_min: 0.01
+    
+    # Distributional RL specific
+    atoms: 51
+    v_min: -10.0
+    v_max: 10.0
+    
+    # Training settings
+    batch_size: 32
+    buffer_size: 10000
+    target_update_freq: 100
+    
+  # Training settings
+  training:
+    episodes: 1000
+    max_steps_per_episode: 1000
+    eval_freq: 100
+    save_freq: 500
+    log_freq: 10
+    
+  # Logging and visualization
+  logging:
+    log_dir: "logs"
+    checkpoint_dir: "checkpoints"
+    save_plots: true
+    plot_freq: 100
+    
+  # Reproducibility
+  seed: 42

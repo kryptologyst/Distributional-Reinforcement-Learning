@@ -1,0 +1,45 @@
+# Configuration for CartPole environment
+default_config:
+  # Environment settings
+  env:
+    name: "CartPole-v1"
+    max_episode_steps: 500
+    
+  # Agent settings
+  agent:
+    algorithm: "C51"
+    state_dim: 4  # CartPole observation space
+    action_dim: 2  # CartPole action space
+    lr: 0.0005
+    gamma: 0.99
+    epsilon: 0.1
+    epsilon_decay: 0.995
+    epsilon_min: 0.01
+    
+    # Distributional RL specific
+    atoms: 51
+    v_min: -10.0
+    v_max: 10.0
+    
+    # Training settings
+    batch_size: 64
+    buffer_size: 50000
+    target_update_freq: 100
+    
+  # Training settings
+  training:
+    episodes: 2000
+    max_steps_per_episode: 500
+    eval_freq: 100
+    save_freq: 500
+    log_freq: 50
+    
+  # Logging and visualization
+  logging:
+    log_dir: "logs"
+    checkpoint_dir: "checkpoints"
+    save_plots: true
+    plot_freq: 200
+    
+  # Reproducibility
+  seed: 42
